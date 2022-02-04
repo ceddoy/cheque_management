@@ -1,0 +1,21 @@
+version: '3.1'
+
+services:
+  db:
+    image: postgres:9.6
+    privileged: true
+    restart: always
+    ports:
+      - "5435:5432"
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "3012150qw"
+      POSTGRES_DB: "cheque_service"
+  wkhtmltopdf:
+    image: openlabs/docker-wkhtmltopdf-aas:latest
+    ports:
+      - "54321:80"
+  redis:
+    image: redis:latest
+    ports:
+      - '6380:6379'

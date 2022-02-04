@@ -1,0 +1,10 @@
+.idea
+cheque_service/secrets.py
+
+/*/migrations/0*
+/*/migrations/__pycache__
+/*/__pycache__
+/*/*/__pycache__
+/*/*/*/__pycache__
+/*/*/*/*/__pycache__
+/*/*/*/*/*/__pycache__

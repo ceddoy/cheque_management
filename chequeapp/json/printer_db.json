@@ -1,0 +1,104 @@
+[
+  {
+    "name": "HP LaserJet Pro M203dw черно-белый",
+    "api_key": "q4x4JfCEwcm9EQkwT8O4gmKHAPfQJqxV",
+    "check_type": "kitchen",
+    "point": 1
+  },
+  {
+    "name": "Canon i-SENSYS LBP223dw",
+    "api_key": "2EUxCmnCFT60Ng6jswhPTeZ3HmAbYcj6",
+    "check_type": "client",
+    "point": 1
+  },
+  {
+    "name": "Epson WorkForce WF-7210DTW",
+    "api_key": "IiuzWaqcfxF2bVOfJLsEpcFkrLry6ws0",
+    "check_type": "kitchen",
+    "point": 2
+  },
+  {
+    "name": "Epson Expression Photo HD XP-15000",
+    "api_key": "bYvGipF1ViLR1AKokKIcy58zGV3Jb56S",
+    "check_type": "client",
+    "point": 2
+  },
+  {
+    "name": "Canon PIXMA iP110",
+    "api_key": "qpsHHOmagyEg7MoyOmdVgIBnsG30xkV6",
+    "check_type": "kitchen",
+    "point": 3
+  },
+  {
+    "name": "HP OfficeJet Pro 8210",
+    "api_key": "MqkoqeMqwPEXVqEgR2ic6y72My4LrsFR",
+    "check_type": "client",
+    "point": 3
+  },
+  {
+    "name": "HP Color LaserJet Pro M255dw",
+    "api_key": "MSM26XOe148VNiTAMZzFTJhp1NroE1Lo",
+    "check_type": "client",
+    "point": 4
+  },
+  {
+    "name": "Epson SureColor SC-P600",
+    "api_key": "PWP3qdmSKkgkvwkg1DSciY9tWg15Zc6P",
+    "check_type": "kitchen",
+    "point": 5
+  },
+  {
+    "name": "Brother HL-L2340DWR",
+    "api_key": "DgKPGGAi8SGDD4eh22YYh40QOH26brVS",
+    "check_type": "kitchen",
+    "point": 6
+  },
+  {
+    "name": "Canon i-SENSYS LBP6030B",
+    "api_key": "RrTidHYMhXSwKK7o5q0z6h6aqQZKE803",
+    "check_type": "client",
+    "point": 6
+  },
+  {
+    "name": "HP LaserJet Pro M404dn",
+    "api_key": "uTa0lAskkozH9XGTUj4qrOZnQ1PLmim9",
+    "check_type": "client",
+    "point": 7
+  },
+  {
+    "name": "Brother HL-1110R",
+    "api_key": "0Ux5bteSguZ1hWaCwGSPp7uYjJVfZHDt",
+    "check_type": "kitchen",
+    "point": 8
+  },
+  {
+    "name": "HP Smart Tank 750 AiO",
+    "api_key": "uie96iXQQl89qCE1GgiUQFQxeAIcQZPh",
+    "check_type": "client",
+    "point": 8
+  },
+  {
+    "name": "Kyocera Ecosys M2540dn",
+    "api_key": "ODhGvR2DD4WBHn9faeC58kXRit0xf4yQ",
+    "check_type": "kitchen",
+    "point": 9
+  },
+  {
+    "name": "Canon Selphy CP1000 White",
+    "api_key": "yr63zk5gY55334ZGTrNGDucmInKCNumN",
+    "check_type": "client",
+    "point": 9
+  },
+  {
+    "name": "Xerox Phaser 3020",
+    "api_key": "uRH3zRgoa1Cbp8H7aCWlbn0ttK3dCjor",
+    "check_type": "kitchen",
+    "point": 10
+  },
+  {
+    "name": "Pantum P3305DW",
+    "api_key": "y4Kf5lyaKIih5qjEtjvZmZhtYh8QT2Du",
+    "check_type": "client",
+    "point": 10
+  }
+]
