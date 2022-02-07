@@ -5,7 +5,7 @@ from cheque_service import secrets
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-SECRET_KEY = secrets.SECRET_KEY
+SECRET_KEY = 'django-insecure-0wtyj5v27d7k^tbrw^=_00jve@2ngt6xvi4(pe0%0m5azcgmw@'
 
 DEBUG = True
 
@@ -20,7 +20,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
-    'rest_framework_api_key',
+    'django_filters',
     'silk',
     'django_rq',
 
@@ -38,6 +38,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_FILTER_BACKENDS': [
+        'django_filters.rest_framework.DjangoFilterBackend'
+    ],
+}
 
 ROOT_URLCONF = 'cheque_service.urls'
 

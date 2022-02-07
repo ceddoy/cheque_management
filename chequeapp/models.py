@@ -1,5 +1,7 @@
 from django.db import models
+from django.http import JsonResponse
 from django.utils.crypto import get_random_string
+from rest_framework import status
 from rest_framework_api_key.models import APIKey
 
 from cheque_service.config import CHEQUE_CHOICES, CHOICES_STATUS_CHEQUE, STATUS_NEW
@@ -24,6 +26,14 @@ class Printer(models.Model):
     def __get_api_key():
         return get_random_string(length=32)
 
+    @staticmethod
+    def check_api_key(key):
+        try:
+            Printer.objects.get(api_key=key)
+        except Printer.DoesNotExist:
+            return JsonResponse({"error": "Ошибка авторизации"},
+                                status=status.HTTP_401_UNAUTHORIZED)
+
     def __str__(self):
         return self.name
 
@@ -41,4 +51,3 @@ class Check(models.Model):
 
     def __str__(self):
         return f'{self.order["id"]}'
-

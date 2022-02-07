@@ -27,7 +27,8 @@ def get_complete_html(data):
         'phone': data['client']["phone"],
         'name': data['client']["name"],
         'items': data['items'],
-        'items_sum': sum([items['unit_price'] * items['quantity'] for items in data['items']]),
+        # 'price': sum([items['unit_price'] * items['quantity'] for items in data['items']]),
+        'price': data['price'],
     }
     return content
 

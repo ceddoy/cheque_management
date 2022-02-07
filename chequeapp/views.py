@@ -1,13 +1,13 @@
-from django.db.models import Q
+import django_rq
 from django.http import JsonResponse, FileResponse
 from rest_framework import status
-from rest_framework.generics import CreateAPIView, ListAPIView
-from rest_framework.views import APIView
+from rest_framework.generics import CreateAPIView, ListAPIView, GenericAPIView
 
-from cheque_service import config
 from chequeapp import services
+from chequeapp.filters import ChecksFilter, CheckFilter
 from chequeapp.models import Check, Printer
-from chequeapp.serializer import CreateCheckSerializer, NewChecksSerializer, CheckSerializer
+from chequeapp.serializer import CreateCheckSerializer, NewChecksSerializer
+from chequeapp.tasks import task_change_status_check
 
 
 class CreateCheckAPIView(CreateAPIView):
@@ -30,50 +30,34 @@ class CreateCheckAPIView(CreateAPIView):
 class NewChecksListAPIView(ListAPIView):
     """Список чеков, которые еще не распечатаны"""
     serializer_class = NewChecksSerializer
-
-    def get_queryset(self):
-        return Check.objects.filter(Q(printer=Printer.objects.get(api_key=self.request.data.get('api_key'))) &
-                                    Q(status=config.STATUS_RENDERED)).select_related('printer').values('id')
+    filterset_class = ChecksFilter
+    queryset = Check.objects.all()
 
     def list(self, request, *args, **kwargs):
-        try:
-            data = super().list(request, *args, **kwargs)
-            return JsonResponse({"checks": list(data.data)})
-        except Printer.DoesNotExist:
-            return JsonResponse({"error": "Ошибка авторизации"},
-                                status=status.HTTP_401_UNAUTHORIZED)
+        error = Printer.check_api_key(request.query_params.get('api_key'))
+        if error:
+            return error
+        queryset = self.filter_queryset(self.get_queryset())
+        serializer = self.get_serializer(queryset, many=True)
+        return JsonResponse({"checks": list(serializer.data)})
 
 
-class CheckAPIView(APIView):
+class CheckAPIView(GenericAPIView):
     """Вывод чека на печать"""
+    queryset = Check.objects.all()
+    filterset_class = CheckFilter
+
     def get(self, request, *args, **kwargs):
-        return self.process_cheque_for_printing(request.data)
-
-    def get_object(self, data):
-        return Check.objects.filter(Q(printer=Printer.objects.get(api_key=data.get('api_key'))) &
-                                    Q(id=data.get('check_id'))).first()
-
-    def check_cheque_for_errors(self, data):
-        try:
-            obj = self.get_object(data)
-        except Printer.DoesNotExist:
-            return JsonResponse({"error": "Ошибка авторизации"},
-                                status=status.HTTP_401_UNAUTHORIZED)
+        error = Printer.check_api_key(request.query_params.get('api_key'))
+        if error:
+            return error
+        obj = self.filter_queryset(self.get_queryset())
         if obj is None:
             return JsonResponse({"error": "Данного чека не существует"},
                                 status=status.HTTP_400_BAD_REQUEST)
         if not obj.pdf_file:
             return JsonResponse({"error": "Для данного чека не сгенерирован PDF-файл"},
                                 status=status.HTTP_400_BAD_REQUEST)
-        return obj
-
-    def process_cheque_for_printing(self, data):
-        serializer = CheckSerializer(data=data)
-        serializer.is_valid(raise_exception=True)
-        obj = self.check_cheque_for_errors(serializer.validated_data)
-        self.change_status(obj)
+        django_rq.enqueue(task_change_status_check, obj)
         return FileResponse(obj.pdf_file.file)
 
-    def change_status(self, obj):
-        obj.status = config.STATUS_PRINTED
-        obj.save(update_fields=['status'])

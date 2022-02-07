@@ -18,11 +18,4 @@ class CreateCheckSerializer(serializers.Serializer):
 
 
 class NewChecksSerializer(serializers.Serializer):
-    api_key = serializers.CharField(max_length=100, write_only=True)
     id = serializers.IntegerField(read_only=True)
-
-
-class CheckSerializer(serializers.Serializer):
-    api_key = serializers.CharField(max_length=100, write_only=True)
-    check_id = serializers.IntegerField(write_only=True)
-    pdf_file = serializers.FileField(read_only=True)
