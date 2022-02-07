@@ -1,8 +1,6 @@
 import os
 from pathlib import Path
 
-from cheque_service import secrets
-
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = 'django-insecure-0wtyj5v27d7k^tbrw^=_00jve@2ngt6xvi4(pe0%0m5azcgmw@'

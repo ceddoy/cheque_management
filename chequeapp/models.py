@@ -2,7 +2,6 @@ from django.db import models
 from django.http import JsonResponse
 from django.utils.crypto import get_random_string
 from rest_framework import status
-from rest_framework_api_key.models import APIKey
 
 from cheque_service.config import CHEQUE_CHOICES, CHOICES_STATUS_CHEQUE, STATUS_NEW
 
