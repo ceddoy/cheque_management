@@ -9,7 +9,7 @@ services:
       - "5435:5432"
     environment:
       POSTGRES_USER: "postgres"
-      POSTGRES_PASSWORD: "3012150qw"
+      POSTGRES_PASSWORD: "postgres"
       POSTGRES_DB: "cheque_service"
   wkhtmltopdf:
     image: openlabs/docker-wkhtmltopdf-aas:latest
