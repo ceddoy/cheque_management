@@ -31,6 +31,8 @@
 После, необходимо заполнить БД принтерами (fixtures) для магазинов:
 * python manage.py fill_db
 
+* python manage.py runserver
+*  
 Теперь вы можете начать взаимодействовать с сервисом.
 ### API points:
 
