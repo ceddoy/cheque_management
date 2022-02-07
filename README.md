@@ -32,8 +32,7 @@
 * python manage.py fill_db
 * python manage.py runserver
 
-* python manage.py runserver
-*  
+ 
 Теперь вы можете начать взаимодействовать с сервисом.
 ### API points:
 
@@ -89,7 +88,7 @@
 в Params
 * api_key
 
-#### api_key можно найти через админ-панель
+#### api_key можно найти через админ-панель в моделях Printer, пример q4x4JfCEwcm9EQkwT8O4gmKHAPfQJqxV
 3) PDF-чек на печать- **/api/check/**
 #### Поля для заполнения (GET-запрос)
 в Params
