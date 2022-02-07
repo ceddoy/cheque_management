@@ -19,7 +19,6 @@ INSTALLED_APPS = [
 
     'rest_framework',
     'django_filters',
-    'silk',
     'django_rq',
 
     'chequeapp',
@@ -27,7 +26,6 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
-    'silk.middleware.SilkyMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -69,8 +67,8 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'cheque_service',
-        'USER': "postgres",
-        'PASSWORD': "postgres",
+        'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'localhost',
         'PORT': '5435',
     }

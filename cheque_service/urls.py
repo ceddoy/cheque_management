@@ -7,7 +7,6 @@ from cheque_service import settings
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('chequeapp.urls')),
-    path('silk/', include('silk.urls', namespace='silk')),
     path('django-rq/', include('django_rq.urls')),
 ]
 
