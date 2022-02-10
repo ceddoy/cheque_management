@@ -29,11 +29,11 @@
 * python manage.py createsuperuser 
 
 После, необходимо заполнить БД принтерами (fixtures) для магазинов:
-* python manage.py fill_db
-* python manage.py runserver
+* python manage.py loaddata printer_data.json
 
- 
+
 Теперь вы можете начать взаимодействовать с сервисом.
+* python manage.py runserver
 ### API points:
 
 1) Создание чеков для заказа -
