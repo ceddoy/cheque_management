@@ -52,7 +52,7 @@ class CheckAPIView(GenericAPIView):
         if error:
             return error
         obj = self.filter_queryset(self.get_queryset())
-        if obj is None:
+        if not obj:
             return JsonResponse({"error": "Данного чека не существует"},
                                 status=status.HTTP_400_BAD_REQUEST)
         if not obj.pdf_file:
