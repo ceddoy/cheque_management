@@ -6,7 +6,8 @@ import json
 from django.core.files.base import ContentFile
 from django.template.loader import render_to_string
 
-from cheque_service import config, settings
+from cheque_service import settings
+from chequeapp.constance import STATUS_RENDERED
 
 host = settings.HOST_RQ
 
@@ -52,5 +53,5 @@ def write_pdf_in_model(base64_contents, filename, check):
         "Content-Type": "application/json"
     }
     response = requests.post(host, data=json.dumps(data), headers=headers)
-    check.status = config.STATUS_RENDERED
+    check.status = STATUS_RENDERED
     check.pdf_file.save(f'{filename}.pdf', ContentFile(response.content))
