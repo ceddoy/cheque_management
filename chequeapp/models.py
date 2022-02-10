@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.utils.crypto import get_random_string
 from rest_framework import status
 
-from cheque_service.config import CHEQUE_CHOICES, CHOICES_STATUS_CHEQUE, STATUS_NEW
+from chequeapp.constance import CHEQUE_CHOICES, CHOICES_STATUS_CHEQUE, STATUS_NEW
 
 
 class Printer(models.Model):

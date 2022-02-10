@@ -1,7 +1,7 @@
 from django.db.models import Q
 from django_filters.rest_framework import FilterSet, filters
 
-from cheque_service import config
+from chequeapp.constance import STATUS_RENDERED
 from chequeapp.models import Check
 
 
@@ -14,7 +14,7 @@ class ChecksFilter(FilterSet):
 
     def filter_checks_by_api_key(self, queryset, name, key):
         return queryset.filter(Q(printer__api_key=key) &
-                               Q(status=config.STATUS_RENDERED)).select_related('printer').values('id')
+                               Q(status=STATUS_RENDERED)).select_related('printer').values('id')
 
 
 class CheckFilter(FilterSet):
