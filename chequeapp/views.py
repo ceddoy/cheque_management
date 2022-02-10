@@ -51,13 +51,13 @@ class CheckAPIView(GenericAPIView):
         error = Printer.check_api_key(request.query_params.get('api_key'))
         if error:
             return error
-        obj = self.filter_queryset(self.get_queryset())
-        if not obj:
+        check = self.filter_queryset(self.get_queryset())
+        if not check:
             return JsonResponse({"error": "Данного чека не существует"},
                                 status=status.HTTP_400_BAD_REQUEST)
-        if not obj.pdf_file:
+        if not check.pdf_file:
             return JsonResponse({"error": "Для данного чека не сгенерирован PDF-файл"},
                                 status=status.HTTP_400_BAD_REQUEST)
-        django_rq.enqueue(task_change_status_check, obj)
-        return FileResponse(obj.pdf_file.file)
+        django_rq.enqueue(task_change_status_check, check)
+        return FileResponse(check.pdf_file.file)
 
