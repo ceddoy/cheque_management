@@ -1,10 +1,5 @@
 .idea
 cheque_service/secrets.py
 
-/*/migrations/0*
-/*/migrations/__pycache__
-/*/__pycache__
-/*/*/__pycache__
-/*/*/*/__pycache__
-/*/*/*/*/__pycache__
-/*/*/*/*/*/__pycache__
+#/*/migrations/0*
+**/__pycache__/
