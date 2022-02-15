@@ -13,7 +13,7 @@ def create_checks(data):
     printer_kitchen = Printer.objects.filter(Q(point=point) & Q(check_type=CHEQUE_KITCHEN)).first()
     printer_client = Printer.objects.filter(Q(point=point) & Q(check_type=CHEQUE_CLIENT)).first()
 
-    if printer_kitchen is None and printer_client is None:
+    if not printer_kitchen and not printer_client:
         raise Printer.DoesNotExist
 
     elif printer_kitchen and printer_client:

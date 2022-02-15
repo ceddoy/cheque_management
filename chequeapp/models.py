@@ -8,7 +8,7 @@ from chequeapp.constance import CHEQUE_CHOICES, CHOICES_STATUS_CHEQUE, STATUS_NE
 
 class Printer(models.Model):
     name = models.CharField(max_length=64, verbose_name='Название принтера')
-    api_key = models.CharField(max_length=100, unique=True, blank=True, verbose_name='API ключ')
+    api_key = models.CharField(max_length=100, blank=True, verbose_name='API ключ', primary_key=True)
     check_type = models.CharField(max_length=64, choices=CHEQUE_CHOICES, verbose_name='Тип чека')
     point = models.PositiveIntegerField(verbose_name='Магазин')
 
